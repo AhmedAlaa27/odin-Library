@@ -39,7 +39,7 @@ function displayBooks() {
         const deleteButton = document.createElement("button")
         deleteButton.textContent = "Remove"
         deleteButton.classList.add("remove")
-        deleteButton.addEventListener("click", () => deleteBook(book.id))
+        deleteButton.addEventListener("click", () => deleteBook(book))
 
         bookDiv.appendChild(readStatus)
         bookDiv.appendChild(toggleReadButton)
@@ -64,8 +64,8 @@ function formSubmit() {
     })
 }
 
-function deleteBook(bookId) {
-    myLibrary.splice(bookId, 1)
+function deleteBook(book) {
+    myLibrary.splice(myLibrary.findIndex(b => b.id === book.id), 1)
     displayBooks()
 }
 
