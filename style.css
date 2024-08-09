@@ -19,6 +19,8 @@ body {
     grid-template: 1fr / 1fr 3fr;
     width: 60%;
     height: 80%;
+    box-shadow: 15px 15px rgb(0, 0, 0, 0.2);
+    border-radius: 12px;
 }
 
 .form {
@@ -69,7 +71,7 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     grid-template-rows: repeat(3, 1fr);
     padding: 24px;
-    gap: 6px;
+    gap: 12px;
 }
 
 .books .book {
@@ -82,6 +84,8 @@ body {
     border-radius: 10px;
     border-left: 5px solid #1e40af;
     padding: 10px;
+    box-shadow: 5px 5px rgb(0, 0, 0, 0.2);
+    border-radius: 12px;
 }
 
 .books .book >:nth-child(2) {
