@@ -47,6 +47,10 @@ body {
     flex-direction: column;
 }
 
+.form form .input-group label {
+    letter-spacing: 3px;
+}
+
 .form form .input-group input {
     border: none;
     outline: none;
@@ -102,7 +106,17 @@ body {
     border-radius: 5px;
     background-color: red;
     color: white;
-    height: 18px;
+    height: 24px;
+    width: 60px;
+    align-self: flex-end;
+}
+
+.books .book .read-status {
+    border: none;
+    border-radius: 5px;
+    background-color: #2563eb;
+    color: white;
+    height: 24px;
     width: 60px;
     align-self: flex-end;
 }

@@ -1,33 +1,4 @@
-const myLibrary = [
-    {
-        id: 0,
-        title: "Book1",
-        author: "Ahmed",
-        pages: 360,
-        read: false
-    },
-    {
-        id: 1,
-        title: "Book2",
-        author: "Alaa",
-        pages: 180,
-        read: true
-    },
-    {
-        id: 2,
-        title: "Book3",
-        author: "Fathy",
-        pages: 270,
-        read: false
-    },
-    {
-        id: 3,
-        title: "TestDelete",
-        author: "AboAlaa",
-        pages: 270,
-        read: false
-    },
-]
+const myLibrary = []
 
 function Book(id, title, author, pages, read) {
     this.id = id
@@ -60,12 +31,18 @@ function displayBooks() {
         readStatus.textContent = (book.read) ? "Read" : "Not Read"
         readStatus.style.color = (book.read) ? "green" : "purple"
 
+        const toggleReadButton = document.createElement("button")
+        toggleReadButton.textContent = (book.read) ? "Unread" : "Read"
+        toggleReadButton.classList.add("read-status")
+        toggleReadButton.addEventListener("click", () => book.changeRead())
+
         const deleteButton = document.createElement("button")
         deleteButton.textContent = "Remove"
         deleteButton.classList.add("remove")
         deleteButton.addEventListener("click", () => deleteBook(book.id))
 
         bookDiv.appendChild(readStatus)
+        bookDiv.appendChild(toggleReadButton)
         bookDiv.appendChild(deleteButton)
 
         booksDiv.appendChild(bookDiv)
@@ -91,6 +68,19 @@ function deleteBook(bookId) {
     myLibrary.splice(bookId, 1)
     displayBooks()
 }
+
+Book.prototype.changeRead = function() {
+    this.read = (this.read) ? false : true
+    displayBooks()
+} 
+
+const book1 = new Book(0, "Book1", "Ahmed", 365, false)
+const book2 = new Book(2, "Book2", "Mohammed", 180, false)
+const book3 = new Book(3, "Book3", "Jesus", 90, false)
+
+myLibrary.push(book1)
+myLibrary.push(book2)
+myLibrary.push(book3)
 
 displayBooks()
 formSubmit()
