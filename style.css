@@ -72,6 +72,7 @@ body {
     grid-template-rows: repeat(3, 1fr);
     padding: 24px;
     gap: 12px;
+    overflow: auto;
 }
 
 .books .book {
