@@ -1,17 +1,20 @@
 const myLibrary = [
     {
+        id: 0,
         title: "Book1",
         author: "Ahmed",
         pages: 360,
         read: false
     },
     {
+        id: 1,
         title: "Book2",
         author: "Alaa",
         pages: 180,
         read: true
     },
     {
+        id: 2,
         title: "Book3",
         author: "Fathy",
         pages: 270,
@@ -19,7 +22,8 @@ const myLibrary = [
     },
 ]
 
-function Book(title, author, pages, read) {
+function Book(id, title, author, pages, read) {
+    this.id = id
     this.title = title
     this.author = author
     this.pages = pages
@@ -38,6 +42,7 @@ function displayBooks() {
         const bookDiv = document.createElement("div")
 
         bookDiv.classList.add("book")
+        bookDiv.setAttribute("data-index", book.id)
         bookDiv.innerHTML = `
             <strong>${book.title}</strong>
             <em>${book.author}</em>
@@ -62,7 +67,8 @@ function formSubmit() {
         let bookAuthor = document.querySelector("#author")
         let bookPages = document.querySelector("#pages")
         let defaultRead = false
-        let newBook = new Book(bookTitle.value, bookAuthor.value, bookPages.value, defaultRead)
+        let newId = myLibrary.length
+        let newBook = new Book(newId, bookTitle.value, bookAuthor.value, bookPages.value, defaultRead)
         addBookToLibrary(newBook)
         displayBooks()
     })
