@@ -31,6 +31,9 @@ function addBookToLibrary(book) {
 }
 
 function displayBooks() {
+    const booksDiv = document.querySelector(".books")
+    booksDiv.innerHTML = ``
+
     myLibrary.forEach((book) => {
         const bookDiv = document.createElement("div")
 
@@ -47,9 +50,23 @@ function displayBooks() {
 
         bookDiv.appendChild(readStatus)
 
-        const booksDiv = document.querySelector(".books")
         booksDiv.appendChild(bookDiv)
     })
 }
 
+function formSubmit() {
+    const form = document.querySelector(".add-book")
+    form.addEventListener("submit", (e) => {
+        e.preventDefault()
+        let bookTitle = document.querySelector("#title")
+        let bookAuthor = document.querySelector("#author")
+        let bookPages = document.querySelector("#pages")
+        let defaultRead = false
+        let newBook = new Book(bookTitle.value, bookAuthor.value, bookPages.value, defaultRead)
+        addBookToLibrary(newBook)
+        displayBooks()
+    })
+}
+
 displayBooks()
+formSubmit()
