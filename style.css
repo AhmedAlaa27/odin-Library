@@ -95,3 +95,12 @@ body {
 .books .book >:nth-child(3) {
     color: #60a5fa;
 }
+
+.books .book .remove {
+    border: none;
+    border-radius: 5px;
+    background-color: red;
+    color: white;
+    height: 18px;
+    width: 60px;
+}

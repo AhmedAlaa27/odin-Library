@@ -20,6 +20,13 @@ const myLibrary = [
         pages: 270,
         read: false
     },
+    {
+        id: 3,
+        title: "TestDelete",
+        author: "AboAlaa",
+        pages: 270,
+        read: false
+    },
 ]
 
 function Book(id, title, author, pages, read) {
@@ -51,9 +58,15 @@ function displayBooks() {
 
         const readStatus = document.createElement("span")
         readStatus.textContent = (book.read) ? "Read" : "Not Read"
-        readStatus.style.color = (book.read) ? "green" : "red"
+        readStatus.style.color = (book.read) ? "green" : "purple"
+
+        const deleteButton = document.createElement("button")
+        deleteButton.textContent = "Remove"
+        deleteButton.classList.add("remove")
+        deleteButton.addEventListener("click", () => deleteBook(book.id))
 
         bookDiv.appendChild(readStatus)
+        bookDiv.appendChild(deleteButton)
 
         booksDiv.appendChild(bookDiv)
     })
@@ -72,6 +85,11 @@ function formSubmit() {
         addBookToLibrary(newBook)
         displayBooks()
     })
+}
+
+function deleteBook(bookId) {
+    myLibrary.splice(bookId, 1)
+    displayBooks()
 }
 
 displayBooks()
